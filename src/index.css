@@ -17,11 +17,7 @@ code {
 }
 
 a {
-  text-decoration: none;
-}
-
-.nav-link {
-  color: #FFFFFF;
+  text-decoration: none !important;
 }
 
 .MuiFormLabel-asterisk.MuiInputLabel-asterisk.css-wgai2y-MuiFormLabel-asterisk {

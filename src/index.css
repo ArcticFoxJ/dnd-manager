@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-link {
+  color: #FFFFFF;
+}
+
+.MuiFormLabel-asterisk.MuiInputLabel-asterisk.css-wgai2y-MuiFormLabel-asterisk {
+  color: #FF0000;
+}

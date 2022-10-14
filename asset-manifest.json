@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dnd-manager/static/css/main.49e6c6a0.css",
+    "main.js": "/dnd-manager/static/js/main.6d3ab6f8.js",
+    "static/js/787.a3857c61.chunk.js": "/dnd-manager/static/js/787.a3857c61.chunk.js",
+    "index.html": "/dnd-manager/index.html",
+    "main.49e6c6a0.css.map": "/dnd-manager/static/css/main.49e6c6a0.css.map",
+    "main.6d3ab6f8.js.map": "/dnd-manager/static/js/main.6d3ab6f8.js.map",
+    "787.a3857c61.chunk.js.map": "/dnd-manager/static/js/787.a3857c61.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.49e6c6a0.css",
+    "static/js/main.6d3ab6f8.js"
+  ]
+}

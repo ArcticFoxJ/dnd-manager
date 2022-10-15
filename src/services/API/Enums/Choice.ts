@@ -1,5 +1,6 @@
 import APIReference from "services/API/Enums/APIReference"
 import Damage from "services/API/Enums/Damage"
+import DifficultyClass from "services/API/Enums/DifficultyClass"
 
 enum OptionType { "reference", "counted_reference", "choice" }
 
@@ -65,21 +66,10 @@ interface OptionType9 extends Option { //option_type =
     bonus: number
 }
 
-interface DC {
-    dc_type: APIReference
-
-    /** Value to beat */
-    dc_value: number
-
-    /** Result of a successful save. Can be "none", "half", or "other" */
-    success_type: string
-}
-
 interface OptionType10 extends Option { //option_type = 
-    
     /** Name of the breath */
     name: string
-    dc: DC
+    dc: DifficultyClass
     damage: Damage[]
 }
 

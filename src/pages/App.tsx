@@ -7,6 +7,7 @@ import Character from 'pages/Character';
 import Classes from 'pages/Classes';
 import Equipment from 'pages/Equipment';
 import MagicItems from 'pages/MagicItems';
+import Monsters from 'pages/Monsters';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='classes' element={<Classes />}/>
             <Route path='equipment' element={<Equipment />}/>
             <Route path='magic-items' element={<MagicItems />}/>
+            <Route path='monsters' element={<Monsters />}/>
             <Route path='*' element={<NotFound />}/>
           </Route>
         </Routes>

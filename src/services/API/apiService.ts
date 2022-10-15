@@ -5,18 +5,21 @@ import Armor from 'services/API/Enums/Armor'
 import Gear from 'services/API/Enums/Gear'
 import EquipmentPack from 'services/API/Enums/EquipmentPack'
 import MagicItem from 'services/API/Enums/MagicItem'
+import Monster from 'services/API/Enums/Monster'
 
 const BASE_URL = "https://www.dnd5eapi.co/api/"
 
-export const getClassList = async (): Promise<ResourceList | undefined> => fetchData<ResourceList | undefined>('classes')
-export const getAlignmentList = async (): Promise<ResourceList | undefined> => fetchData<ResourceList | undefined>('alignments')
-export const getRaceList = async (): Promise<ResourceList| undefined> => fetchData<ResourceList | undefined>('races')
-export const getEquipmentList = async (): Promise<ResourceList | undefined> => fetchData<ResourceList | undefined>('equipment')
-export const getMagicItemList = async (): Promise<ResourceList | undefined> => fetchData<ResourceList | undefined>('magic-items')
+export const getClassList = async () => fetchData<ResourceList | undefined>('classes')
+export const getAlignmentList = async () => fetchData<ResourceList | undefined>('alignments')
+export const getRaceList = async () => fetchData<ResourceList | undefined>('races')
+export const getEquipmentList = async () => fetchData<ResourceList | undefined>('equipment')
+export const getMagicItemList = async () => fetchData<ResourceList | undefined>('magic-items')
+export const getMonsterList = async () => fetchData<ResourceList | undefined>('monsters')
 
-export const getClass = async (index: string): Promise<ClassData | undefined> => fetchData<ClassData | undefined>(`classes/${index}`)
-export const getEquipment = async (index: string): Promise<Weapon|Armor|Gear|EquipmentPack | undefined> => fetchData<Weapon|Armor|Gear|EquipmentPack | undefined>(`equipment/${index}`)
-export const getMagicItem = async (index: string): Promise<MagicItem | undefined> => fetchData<MagicItem | undefined>(`magic-items/${index}`)
+export const getClass = async (index: string) => fetchData<ClassData | undefined>(`classes/${index}`)
+export const getEquipment = async (index: string) => fetchData<Weapon|Armor|Gear|EquipmentPack | undefined>(`equipment/${index}`)
+export const getMagicItem = async (index: string) => fetchData<MagicItem | undefined>(`magic-items/${index}`)
+export const getMonster = async (index: string) => fetchData<Monster | undefined>(`monsters/${index}`)
 
 const fetchData = async <T>(endpoint: string): Promise<T | undefined> => {
 

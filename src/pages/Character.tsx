@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import SelectList, { ListItem } from 'components/forms/SelectList'
 import React, { useEffect, useState } from 'react'
 import { getAlignmentList, getClassList, getRaceList } from 'services/API/apiService'
@@ -46,7 +46,13 @@ const Character = () => {
 
   return (
     <div>
-      <h3>Classes</h3>
+      <Typography 
+          variant="h1"
+          color="text.primary"
+          gutterBottom
+      >
+          Character
+      </Typography>
       <div>
         <Button variant="contained" onClick={randomise}>Randomise</Button>
       </div>

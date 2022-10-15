@@ -6,19 +6,19 @@ const Classes = () => {
     const [classes, setClasses] = useState<ClassData[]>([])
 
     useEffect(() => {
-        setClasses([])
-
         const populateClasses = async () => {
             getClasses().then(data => {
-                data?.results
-                .forEach(resource => {
-                    getClass(resource.index)
-                      .then(x => {
-                        if(x) {
-                            setClasses(current => [...current, x])
-                        }
-                    })
+              let classList: ClassData[] = []
+              let promises = data?.results.map(resource => {
+                return getClass(resource.index).then(x => {
+                  if(x) {
+                    classList.push(x)
+                  }
                 })
+              }) || []
+              Promise.all(promises).then(() =>
+                setClasses(classList)
+              )
             }
         )}
 

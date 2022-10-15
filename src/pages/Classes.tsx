@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { ClassData, getClass, getClasses } from 'services/api'
+import { getClass, getClasses } from 'services/API/apiService'
+import { ClassData } from 'services/API/Enums/Class'
 
 const Classes = () => {
 

@@ -1,8 +1,8 @@
 import { Box, Button } from '@mui/material'
 import SelectList, { ListItem } from 'components/forms/SelectList'
 import React, { useEffect, useState } from 'react'
-import { getAlignments, getClasses, getRaces, ResourceList } from 'services/api'
-
+import { getAlignments, getClasses, getRaces } from 'services/API/apiService'
+import ResourceList from 'services/API/Enums/ResourceList'
 
 const Character = () => {
 

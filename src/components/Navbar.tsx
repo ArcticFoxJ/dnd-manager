@@ -47,6 +47,9 @@ const Navbar = () => {
             <MenuItem color='inherit'>            
               <Link to='/equipment'>Equipment</Link> {/* TODO: Get template color? */}
             </MenuItem>
+            <MenuItem color='inherit'>            
+              <Link to='/magic-items'>Magic Items</Link> {/* TODO: Get template color? */}
+            </MenuItem>
           </Menu>
         </Stack>
       </Toolbar>

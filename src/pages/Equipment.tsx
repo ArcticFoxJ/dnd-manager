@@ -31,20 +31,20 @@ const Equipment = () => {
       
     return (
         <div>
-            <Typography 
-                variant="h1"
-                color="text.primary"
-                gutterBottom
-            >
-                Equipment
-            </Typography>
-            { 
-                !equipment 
-                ? <CircularProgress /> 
-                : equipment?.map(data => 
-                    <div key={data.index}>{data.name}</div>
-                )
-            }
+          <Typography 
+              variant="h1"
+              color="text.primary"
+              gutterBottom
+          >
+              Equipment
+          </Typography>
+          { 
+              !equipment 
+              ? <CircularProgress /> 
+              : equipment?.map(data => 
+                  <div key={data.index}>{data.name}</div>
+              )
+          }
         </div>
     )
 }

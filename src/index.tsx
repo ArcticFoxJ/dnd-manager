@@ -9,11 +9,16 @@ import { blueGrey } from '@mui/material/colors';
 const theme = createTheme({
   palette: {
     primary: {
-      main: blueGrey[500],
+      main: '#000000',
+      contrastText: '#FFFFFF'
     },
     secondary: {
-      main: blueGrey[400],
+      main: '#111111',
+      contrastText: '#FFFFFF'
     },
+    text: {
+      primary: '#000000',
+    }
   },
 });
 

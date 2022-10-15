@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { ClassData, getClass, getClasses } from 'services/api'
 
@@ -27,6 +28,12 @@ const Classes = () => {
 
   return (
     <div>
+      <Typography 
+          variant="h1"
+          color="text.primary"
+          gutterBottom>
+        Classes
+      </Typography>
       {classes?.map(classData => 
         <div key={classData.index}>{classData.name}</div>
       )}

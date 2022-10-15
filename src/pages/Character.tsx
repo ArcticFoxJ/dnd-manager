@@ -20,16 +20,13 @@ const Character = () => {
 
   useEffect(() => {
     const populateClasses = async () => {
-      await getClasses()
-        .then(data => setClasses(mapResponseToSelect(data)))
+      getClasses().then(data => setClasses(mapResponseToSelect(data)))
     }
     const populateAlignments = async () => {
-      await getAlignments()
-        .then(data => setAlignments(mapResponseToSelect(data)))
+      getAlignments().then(data => setAlignments(mapResponseToSelect(data)))
     }
     const populateRaces = async () => {
-      await getRaces()
-        .then(data => setRaces(mapResponseToSelect(data)))
+      getRaces().then(data => setRaces(mapResponseToSelect(data)))
     }
     populateClasses()
     populateAlignments()

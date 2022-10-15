@@ -10,9 +10,10 @@ const Classes = () => {
 
         const populateClasses = async () => {
             getClasses().then(data => {
-                data?.results.map(x => x.index)
-                .forEach((x) => {
-                    getClass(x).then((x: ClassData | undefined) => {
+                data?.results
+                .forEach(resource => {
+                    getClass(resource.index)
+                      .then(x => {
                         if(x) {
                             setClasses(current => [...current, x])
                         }

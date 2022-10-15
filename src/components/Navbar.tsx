@@ -1,5 +1,6 @@
-import { AppBar, Button, Link, Menu, MenuItem, Stack, Toolbar, Typography } from '@mui/material'
+import { AppBar, Button, Menu, MenuItem, Stack, Toolbar, Typography } from '@mui/material'
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -21,7 +22,7 @@ const Navbar = () => {
         </Typography>
         <Stack direction='row' spacing={2}> 
           <Button color='inherit'>
-            <Link color='inherit' href='/character'>Character</Link>
+            <Link to='/character'>Character</Link> {/* TODO: Get template color? */}
           </Button>
           <Button
             color='inherit'
@@ -41,7 +42,10 @@ const Navbar = () => {
             }}
           >
             <MenuItem color='inherit'>            
-              <Link  color='inherit' href='/classes'>Classes</Link>
+              <Link to='/classes'>Classes</Link> {/* TODO: Get template color? */}
+            </MenuItem>
+            <MenuItem color='inherit'>            
+              <Link to='/equipment'>Equipment</Link> {/* TODO: Get template color? */}
             </MenuItem>
           </Menu>
         </Stack>

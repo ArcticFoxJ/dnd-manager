@@ -1,7 +1,7 @@
 import { Box, Button } from '@mui/material'
 import SelectList, { ListItem } from 'components/forms/SelectList'
 import React, { useEffect, useState } from 'react'
-import { getAlignments, getClasses, getRaces } from 'services/API/apiService'
+import { getAlignmentList, getClassList, getRaceList } from 'services/API/apiService'
 import ResourceList from 'services/API/Enums/ResourceList'
 
 const Character = () => {
@@ -20,13 +20,13 @@ const Character = () => {
 
   useEffect(() => {
     const populateClasses = async () => {
-      getClasses().then(data => setClasses(mapResponseToSelect(data)))
+      getClassList().then(data => setClasses(mapResponseToSelect(data)))
     }
     const populateAlignments = async () => {
-      getAlignments().then(data => setAlignments(mapResponseToSelect(data)))
+      getAlignmentList().then(data => setAlignments(mapResponseToSelect(data)))
     }
     const populateRaces = async () => {
-      getRaces().then(data => setRaces(mapResponseToSelect(data)))
+      getRaceList().then(data => setRaces(mapResponseToSelect(data)))
     }
     populateClasses()
     populateAlignments()

@@ -1,4 +1,5 @@
 import APIReference from "services/API/Enums/APIReference"
+import Damage from "services/API/Enums/Damage"
 
 enum OptionType { "reference", "counted_reference", "choice" }
 
@@ -72,11 +73,6 @@ interface DC {
 
     /** Result of a successful save. Can be "none", "half", or "other" */
     success_type: string
-}
-
-interface Damage {
-    damage_dice: string
-    damage_type: APIReference
 }
 
 interface OptionType10 extends Option { //option_type = 

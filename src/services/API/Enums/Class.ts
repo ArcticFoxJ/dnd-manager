@@ -1,8 +1,12 @@
 import APIReference from "services/API/Enums/APIReference"
 import MultiClassing from "services/API/Enums/MultiClassing"
 import Spellcasting from "services/API/Enums/Spellcasting"
-import Equipment from "services/API/Enums/Equipment"
 import Choice from "services/API/Enums/Choice"
+
+interface ClassEquipment {
+    equipment: APIReference
+    quantity: number
+}
 
 export interface ClassData extends APIReference {
     /** Hit die of the class. (ex: 12 == 1d12) */
@@ -19,7 +23,7 @@ export interface ClassData extends APIReference {
     spells: string
 
     /** List of equipment and their quantities all players of the class start with */
-	starting_equipment: Equipment[]
+	starting_equipment: ClassEquipment[]
 
     /** List of choices of starting equipment */
 	starting_equipment_options: Choice[]

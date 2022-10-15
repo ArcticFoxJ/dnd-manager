@@ -4,7 +4,7 @@ import Layout from 'components/Layout';
 import 'pages/App.css';
 import NotFound from 'pages/NotFound';
 import Character from 'pages/Character';
-import Home from 'pages/Home';
+import Equipment from 'pages/Equipment';
 import Classes from 'pages/Classes';
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route path='character' element={<Character />}/>
             <Route path='classes' element={<Classes />}/>
+            <Route path='equipment' element={<Equipment />}/>
             <Route path='*' element={<NotFound />}/>
           </Route>
         </Routes>

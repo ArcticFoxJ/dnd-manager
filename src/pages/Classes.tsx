@@ -1,25 +1,25 @@
-import { Typography } from '@mui/material'
+import { CircularProgress, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { getClass, getClasses } from 'services/API/apiService'
+import { getClass, getClassList } from 'services/API/apiService'
 import { ClassData } from 'services/API/Enums/Class'
 
 const Classes = () => {
 
-    const [classes, setClasses] = useState<ClassData[]>([])
+    const [classes, setClasses] = useState<ClassData[]>()
 
     useEffect(() => {
         const populateClasses = async () => {
-            getClasses().then(data => {
-              let classList: ClassData[] = []
+            getClassList().then(data => {
+              let list: ClassData[] = []
               let promises = data?.results.map(resource => {
                 return getClass(resource.index).then(x => {
                   if(x) {
-                    classList.push(x)
+                    list.push(x)
                   }
                 })
               }) || []
               Promise.all(promises).then(() =>
-                setClasses(classList)
+                setClasses(list)
               )
             }
         )}
@@ -32,12 +32,17 @@ const Classes = () => {
       <Typography 
           variant="h1"
           color="text.primary"
-          gutterBottom>
+          gutterBottom
+        >
         Classes
       </Typography>
-      {classes?.map(classData => 
-        <div key={classData.index}>{classData.name}</div>
-      )}
+      { 
+        !classes 
+        ? <CircularProgress /> 
+        : classes?.map(data => 
+            <div key={data.index}>{data.name}</div>
+        )
+      }
     </div>
   )
 }

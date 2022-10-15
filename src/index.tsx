@@ -4,7 +4,6 @@ import 'index.css';
 import App from 'pages/App';
 import reportWebVitals from './reportWebVitals';
 import { createTheme, ThemeProvider } from '@mui/material';
-import { blueGrey } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {

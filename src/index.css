@@ -18,6 +18,11 @@ code {
 
 a {
   text-decoration: none !important;
+  color: #FFFFFF;
+}
+
+[role="menuitem"] a {
+  color: #000000;
 }
 
 .MuiFormLabel-asterisk.MuiInputLabel-asterisk.css-wgai2y-MuiFormLabel-asterisk {

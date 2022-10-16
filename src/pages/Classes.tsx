@@ -2,30 +2,15 @@ import { CircularProgress, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { getClass, getClassList } from 'services/API/apiService'
 import { ClassData } from 'services/API/Enums/Class'
+import { populateList } from 'services/helpers'
 
 const Classes = () => {
 
     const [classes, setClasses] = useState<ClassData[]>()
 
     useEffect(() => {
-        const populateClasses = async () => {
-            getClassList().then(data => {
-              let list: ClassData[] = []
-              let promises = data?.results.map(resource => {
-                return getClass(resource.index).then(x => {
-                  if(x) {
-                    list.push(x)
-                  }
-                })
-              }) || []
-              Promise.all(promises).then(() =>
-                setClasses(list)
-              )
-            }
-        )}
-
-        populateClasses() 
-      }, [])
+      populateList(getClassList, getClass, setClasses)
+    }, [])
 
   return (
     <div>

@@ -5,29 +5,14 @@ import Gear from 'services/API/Enums/Gear'
 import EquipmentPack from 'services/API/Enums/EquipmentPack'
 import { getEquipmentList, getEquipment } from 'services/API/apiService'
 import { CircularProgress, Typography } from '@mui/material'
+import { populateList } from 'services/helpers'
 
 const Equipment = () => {
     const [equipment, setEquipment] = useState<(Weapon|Armor|Gear|EquipmentPack)[]>()
 
     useEffect(() => {
-        const populateEquipment = async () => {
-            getEquipmentList().then(data => {
-              let list: (Weapon|Armor|Gear|EquipmentPack)[] = []
-              let promises = data?.results.map(resource => {
-                return getEquipment(resource.index).then(x => {
-                  if(x) {
-                    list.push(x)
-                  }
-                })
-              }) || []
-              Promise.all(promises).then(() =>
-                setEquipment(list)
-              )
-            })
-        }
-
-        populateEquipment() 
-      }, [])
+      populateList(getEquipmentList, getEquipment, setEquipment)
+    }, [])
       
     return (
         <div>

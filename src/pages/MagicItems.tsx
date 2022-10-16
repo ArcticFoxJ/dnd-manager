@@ -2,28 +2,13 @@ import { CircularProgress, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { getMagicItem, getMagicItemList } from 'services/API/apiService'
 import MagicItem from 'services/API/Enums/MagicItem'
+import { populateList } from 'services/helpers'
 
 const MagicItems = () => {
   const [magicItems, setMagicItems] = useState<MagicItem[]>()
   
   useEffect(() => {
-    const populateEquipment = async () => {
-        getMagicItemList().then(data => {
-          let list: MagicItem[] = []
-          let promises = data?.results.map(resource => {
-            return getMagicItem(resource.index).then(x => {
-              if(x) {
-                list.push(x)
-              }
-            })
-          }) || []
-          Promise.all(promises).then(() =>
-          setMagicItems(list)
-          )
-        })
-    }
-
-    populateEquipment() 
+    populateList(getMagicItemList, getMagicItem, setMagicItems)
   }, [])
 
   return (

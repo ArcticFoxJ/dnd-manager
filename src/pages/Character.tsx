@@ -5,15 +5,30 @@ import PageTitle from 'components/PageTitle'
 import { getAlignmentList, getClassList, getRaceList } from 'services/API/apiService'
 import ResourceList from 'services/API/Enums/ResourceList'
 
+interface CharacterData {
+  classType: string
+  alignment: string
+  race: string
+}
+
 const Character = () => {
 
   const [classes, setClasses] = useState<ListItem[] | undefined>()
   const [alignments, setAlignments] = useState<ListItem[] | undefined>()
   const [races, setRaces] = useState<ListItem[] | undefined>()
   
-  const [classType, setClassType] = useState<string>('')
-  const [alignment, setAlignment] = useState<string>('')
-  const [race, setRace] = useState<string>('')
+  const [character, setCharacter] = useState<CharacterData>({
+    classType: '',
+    alignment: '',
+    race: ''
+  })
+
+  const mergeCharacterProps = (newProps: any) => {
+    setCharacter(c => ({
+      ...c, 
+      ...newProps
+    }))
+  }
 
   const mapResponseToSelect = (data: ResourceList | undefined): ListItem[] | undefined => {
     return data?.results?.map(c => new ListItem(c.index, c.name)) || undefined
@@ -36,13 +51,13 @@ const Character = () => {
 
   const randomise = () => {
     const classKeys = classes?.map(x => x.key) as string[]
-    setClassType(classKeys[Math.floor(Math.random()*classKeys?.length)])
+    mergeCharacterProps({classType: classKeys[Math.floor(Math.random()*classKeys?.length)]})
     
     const alignmentKeys = alignments?.map(x => x.key) as string[]
-    setAlignment(alignmentKeys[Math.floor(Math.random()*alignmentKeys?.length)])
-    
+    mergeCharacterProps({alignment: alignmentKeys[Math.floor(Math.random()*alignmentKeys?.length)]})
+
     const raceKeys = races?.map(x => x.key) as string[]
-    setRace(raceKeys[Math.floor(Math.random()*raceKeys?.length)])
+    mergeCharacterProps({race: raceKeys[Math.floor(Math.random()*raceKeys?.length)]})
   }
 
   return (
@@ -52,9 +67,9 @@ const Character = () => {
         <Button variant="contained" onClick={randomise}>Randomise</Button>
       </div>
       <Box component="div">
-        <SelectList id='class-type' title='Class' required={true} value={classType} items={classes} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {setClassType(e.target.value)}} />
-        <SelectList id='alignment' title='Alignment' required={true} value={alignment} items={alignments} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {setAlignment(e.target.value)}} />
-        <SelectList id='race' title='Race' required={true} value={race} items={races} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {setRace(e.target.value)}} />
+        <SelectList id='class-type' title='Class' required={true} value={character.classType} items={classes} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {mergeCharacterProps({classType: e.target.value})}} />
+        <SelectList id='alignment' title='Alignment' required={true} value={character.alignment} items={alignments} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {mergeCharacterProps({alignment: e.target.value})}} />
+        <SelectList id='race' title='Race' required={true} value={character.race} items={races} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {mergeCharacterProps({race: e.target.value})}} />
       </Box>
     </div>
   )

@@ -4,16 +4,20 @@ import 'index.css';
 import App from 'pages/App';
 import reportWebVitals from './reportWebVitals';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { blueGrey } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#000000',
+      main: blueGrey[900],
       contrastText: '#FFFFFF'
     },
     secondary: {
-      main: '#111111',
+      main: blueGrey[800],
       contrastText: '#FFFFFF'
+    },
+    info: {
+      main: blueGrey[600]
     },
     text: {
       primary: '#000000',

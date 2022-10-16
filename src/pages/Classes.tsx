@@ -1,21 +1,22 @@
-import { useEffect, useState } from 'react'
-import { CircularProgress, Typography } from '@mui/material'
-import PageTitle from 'components/PageTitle'
+import React, { useEffect, useState } from 'react'
+import { CircularProgress } from '@mui/material'
 import { getClass, getClassList } from 'services/API/apiService'
 import { ClassData } from 'services/API/Enums/Class'
 import { populateList } from 'services/helpers'
+import PageProps from 'pages/PageProps'
 
-const Classes = () => {
+const Classes = ({setTitle}: PageProps) => {
 
-    const [classes, setClasses] = useState<ClassData[]>()
+  setTitle('Classes')
 
-    useEffect(() => {
-      populateList(getClassList, getClass, setClasses)
-    }, [])
+  const [classes, setClasses] = useState<ClassData[]>()
+
+  useEffect(() => {
+    populateList(getClassList, getClass, setClasses)
+  }, [])
 
   return (
-    <div>
-      <PageTitle title="Classes" />
+    <React.Fragment>
       { 
         !classes 
         ? <CircularProgress /> 
@@ -23,7 +24,7 @@ const Classes = () => {
           <div key={data.index}>{data.name}</div>
         )
       }
-    </div>
+    </React.Fragment>
   )
 }
 

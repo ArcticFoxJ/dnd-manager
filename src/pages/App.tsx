@@ -8,18 +8,22 @@ import Classes from 'pages/Classes';
 import Equipment from 'pages/Equipment';
 import MagicItems from 'pages/MagicItems';
 import Monsters from 'pages/Monsters';
+import { useState } from 'react';
 
 function App() {
+
+  const [title, setTitle] = useState('')
+
   return (
     <BrowserRouter>
         <Routes>
           {/* <Route path='dnd-manager' element={<Home />}/> */}
-          <Route path='/' element={<Layout />}>
-            <Route path='character' element={<Character />}/>
-            <Route path='classes' element={<Classes />}/>
-            <Route path='equipment' element={<Equipment />}/>
-            <Route path='magic-items' element={<MagicItems />}/>
-            <Route path='monsters' element={<Monsters />}/>
+          <Route path='/' element={<Layout title={title}/>}>
+            <Route path='character' element={<Character setTitle={setTitle} />}/>
+            <Route path='classes' element={<Classes setTitle={setTitle} />}/>
+            <Route path='equipment' element={<Equipment setTitle={setTitle} />}/>
+            <Route path='magic-items' element={<MagicItems setTitle={setTitle} />}/>
+            <Route path='monsters' element={<Monsters setTitle={setTitle} />}/>
             <Route path='*' element={<NotFound />}/>
           </Route>
         </Routes>

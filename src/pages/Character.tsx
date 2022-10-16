@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Button } from '@mui/material'
 import SelectList, { ListItem } from 'components/forms/SelectList'
-import PageTitle from 'components/PageTitle'
 import { getAlignmentList, getClassList, getRaceList } from 'services/API/apiService'
 import ResourceList from 'services/API/Enums/ResourceList'
+import PageProps from 'pages/PageProps'
 
 interface CharacterData {
   classType: string
@@ -11,7 +11,9 @@ interface CharacterData {
   race: string
 }
 
-const Character = () => {
+const Character = ({setTitle}: PageProps) => {
+
+  setTitle('Character')
 
   const [classes, setClasses] = useState<ListItem[] | undefined>()
   const [alignments, setAlignments] = useState<ListItem[] | undefined>()
@@ -61,8 +63,7 @@ const Character = () => {
   }
 
   return (
-    <div>
-      <PageTitle title="Character" />
+    <React.Fragment>
       <div>
         <Button variant="contained" onClick={randomise}>Randomise</Button>
       </div>
@@ -71,7 +72,7 @@ const Character = () => {
         <SelectList id='alignment' title='Alignment' required={true} value={character.alignment} items={alignments} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {mergeCharacterProps({alignment: e.target.value})}} />
         <SelectList id='race' title='Race' required={true} value={character.race} items={races} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {mergeCharacterProps({race: e.target.value})}} />
       </Box>
-    </div>
+    </React.Fragment>
   )
 }
 

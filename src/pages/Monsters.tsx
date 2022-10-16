@@ -1,11 +1,14 @@
+import React, { useEffect, useState } from 'react'
 import { CircularProgress } from '@mui/material'
-import { useEffect, useState } from 'react'
-import PageTitle from 'components/PageTitle'
 import { getMonster, getMonsterList } from 'services/API/apiService'
 import Monster from 'services/API/Enums/Monster'
 import { populateList } from 'services/helpers'
+import PageProps from 'pages/PageProps'
 
-const Monsters = () => {
+const Monsters = ({setTitle}: PageProps) => {
+
+  setTitle('Monsters')
+
   const [monsters, setMonsters] = useState<Monster[]>()
 
   useEffect(() => {
@@ -13,8 +16,7 @@ const Monsters = () => {
   }, [])
     
   return (
-    <div>
-      <PageTitle title="Monsters" />
+    <React.Fragment>
       { 
         !monsters 
         ? <CircularProgress /> 
@@ -22,7 +24,7 @@ const Monsters = () => {
           <div key={data.index}>{data.name}</div>
         )
       }
-    </div>
+    </React.Fragment>
   )
 }
 

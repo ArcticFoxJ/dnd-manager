@@ -1,6 +1,7 @@
-import { Box, Button, Typography } from '@mui/material'
-import SelectList, { ListItem } from 'components/forms/SelectList'
 import React, { useEffect, useState } from 'react'
+import { Box, Button } from '@mui/material'
+import SelectList, { ListItem } from 'components/forms/SelectList'
+import PageTitle from 'components/PageTitle'
 import { getAlignmentList, getClassList, getRaceList } from 'services/API/apiService'
 import ResourceList from 'services/API/Enums/ResourceList'
 
@@ -46,13 +47,7 @@ const Character = () => {
 
   return (
     <div>
-      <Typography 
-          variant="h1"
-          color="text.primary"
-          gutterBottom
-      >
-          Character
-      </Typography>
+      <PageTitle title="Character" />
       <div>
         <Button variant="contained" onClick={randomise}>Randomise</Button>
       </div>

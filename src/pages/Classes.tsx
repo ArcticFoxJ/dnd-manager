@@ -1,5 +1,6 @@
-import { CircularProgress, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
+import { CircularProgress, Typography } from '@mui/material'
+import PageTitle from 'components/PageTitle'
 import { getClass, getClassList } from 'services/API/apiService'
 import { ClassData } from 'services/API/Enums/Class'
 import { populateList } from 'services/helpers'
@@ -14,18 +15,12 @@ const Classes = () => {
 
   return (
     <div>
-      <Typography 
-          variant="h1"
-          color="text.primary"
-          gutterBottom
-        >
-        Classes
-      </Typography>
+      <PageTitle title="Classes" />
       { 
         !classes 
         ? <CircularProgress /> 
         : classes?.map(data => 
-            <div key={data.index}>{data.name}</div>
+          <div key={data.index}>{data.name}</div>
         )
       }
     </div>

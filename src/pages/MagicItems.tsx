@@ -1,5 +1,6 @@
-import { CircularProgress, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
+import { CircularProgress } from '@mui/material'
+import PageTitle from 'components/PageTitle'
 import { getMagicItem, getMagicItemList } from 'services/API/apiService'
 import MagicItem from 'services/API/Enums/MagicItem'
 import { populateList } from 'services/helpers'
@@ -13,19 +14,13 @@ const MagicItems = () => {
 
   return (
     <div>
-      <Typography 
-          variant="h1"
-          color="text.primary"
-          gutterBottom
-      >
-          Magic Items
-      </Typography>
+      <PageTitle title="Magic Items" />
       { 
-          !magicItems 
-          ? <CircularProgress /> 
-          : magicItems?.map(data => 
-              <div key={data.index}>{data.name}</div>
-          )
+        !magicItems 
+        ? <CircularProgress /> 
+        : magicItems?.map(data => 
+          <div key={data.index}>{data.name}</div>
+        )
       }
     </div>
   )

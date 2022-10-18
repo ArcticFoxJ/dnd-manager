@@ -18,6 +18,9 @@ const MagicItems = ({setTitle}: PageProps) => {
   const [rarityFilterOptions, setRarityFilterOptions] = useState<ListItem[]>()
   const [rarityFilter, setRarityFilter] = useState<string>('')
 
+  const [categoryFilterOptions, setCategoryFilterOptions] = useState<ListItem[]>()
+  const [categoryFilter, setCategoryFilter] = useState<string>('')
+
   useEffect(() => {
     const setFilterOptions = (items: MagicItem[]) => {
       setRarityFilterOptions(
@@ -26,7 +29,14 @@ const MagicItems = ({setTitle}: PageProps) => {
         .sort((x, y) => x.value.localeCompare(y.value))
       )
     }
-    populateList(getMagicItemList, getMagicItem, setMagicItems, setFilterOptions)
+    const setOtherFilterOptions = (items: MagicItem[]) => {
+      setCategoryFilterOptions(
+        [...new Set(items?.map(item => item.equipment_category.name))]
+        .map(category => { return new ListItem(category, category) })
+        .sort((x, y) => x.value.localeCompare(y.value))
+      )
+    }
+    populateList(getMagicItemList, getMagicItem, setMagicItems, (items) => {setFilterOptions(items); setOtherFilterOptions(items)})
   }, [])
 
   return (
@@ -36,9 +46,12 @@ const MagicItems = ({setTitle}: PageProps) => {
         : <div>
             <Box mb={3} >
               <SelectList id="rarity-select" title="Rarity" value={rarityFilter} items={rarityFilterOptions} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {setRarityFilter(e.target.value)}} />
+              <SelectList id="category-select" title="Category" value={categoryFilter} items={categoryFilterOptions} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {setCategoryFilter(e.target.value)}} />
             </Box>
             <Grid container spacing={5} alignItems="flex-start">
-              { magicItems?.filter(item => !rarityFilter || (item.rarity.name == rarityFilter)).map(data => 
+              { magicItems?.filter(item => !rarityFilter || (item.rarity.name == rarityFilter))
+              .filter(item => !categoryFilter || (item.equipment_category.name == categoryFilter))
+              .map(data => 
               <Grid item key={data.index} xs={12} sm={6} md={4}> {/* style={{display: 'flex'}}  */}
                 <Card>
                   <CardHeader

@@ -25,15 +25,8 @@ const MagicItems = ({setTitle}: PageProps) => {
         ? <CenterSpinner />
         : <Grid container spacing={5} alignItems="flex-start">
           { magicItems?.map(data => 
-            <Grid
-              item
-              key={data.index}
-              xs={12}
-              sm={6}
-              md={4} 
-              // style={{display: 'flex'}}
-            >
-              <Card >
+            <Grid item key={data.index} xs={12} sm={6} md={4}> {/* style={{display: 'flex'}}  */}
+              <Card>
               <CardHeader
                   title={data.name}
                   subheader={data.rarity.name + ' - ' + data.equipment_category.name + (data.variant ? ' - variant' : '')}
@@ -51,12 +44,8 @@ const MagicItems = ({setTitle}: PageProps) => {
                 />
                 <CardContent>
                 {
-                  data.desc.map(description => 
-                    <Typography
-                      variant="body1"
-                      color="text.primary"
-                      gutterBottom
-                    >
+                  data.desc.map((description, i) => 
+                    <Typography key={data.index + "-desc-" + i} variant="body1" color="text.primary" gutterBottom >
                       {description}
                     </Typography>  
                   )

@@ -13,7 +13,9 @@ interface CharacterData {
 
 const Character = ({setTitle}: PageProps) => {
 
-  setTitle('Character')
+  useEffect(() => {
+    setTitle('Character')
+  }, [])
 
   const [classes, setClasses] = useState<ListItem[] | undefined>()
   const [alignments, setAlignments] = useState<ListItem[] | undefined>()

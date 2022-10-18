@@ -10,7 +10,9 @@ import PageProps from 'pages/PageProps'
 
 const Equipment = ({setTitle}: PageProps) => {
 
-  setTitle('Equipment')
+  useEffect(() => {
+    setTitle('Equipment')
+  }, [])
 
   const [equipment, setEquipment] = useState<(Weapon|Armor|Gear|EquipmentPack)[]>()
 

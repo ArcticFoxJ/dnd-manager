@@ -8,7 +8,9 @@ import CenterSpinner from 'components/CenterSpinner'
 
 const MagicItems = ({setTitle}: PageProps) => {
 
-  setTitle("Magic Items")
+  useEffect(() => {
+    setTitle("Magic Items")
+  }, [])
 
   const [magicItems, setMagicItems] = useState<MagicItem[]>()
   

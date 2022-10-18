@@ -7,7 +7,9 @@ import PageProps from 'pages/PageProps'
 
 const Classes = ({setTitle}: PageProps) => {
 
-  setTitle('Classes')
+  useEffect(() => {
+    setTitle('Classes')
+  }, [])
 
   const [classes, setClasses] = useState<ClassData[]>()
 

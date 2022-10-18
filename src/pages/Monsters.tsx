@@ -7,7 +7,9 @@ import PageProps from 'pages/PageProps'
 
 const Monsters = ({setTitle}: PageProps) => {
 
-  setTitle('Monsters')
+  useEffect(() => {
+    setTitle('Monsters')
+  }, [])
 
   const [monsters, setMonsters] = useState<Monster[]>()
 

@@ -16,16 +16,17 @@ interface SelectProps {
     value: string
     required?: boolean
     items: ListItem[] | undefined
+    includeEmpty?: boolean
     onChange: any
 }
 
-const SelectList = ({onChange, id, title, value, items, required = false}: SelectProps) => {
+const SelectList = ({onChange, id, title, value, items, required = false, includeEmpty = true}: SelectProps) => {
   return (
     <FormControl fullWidth  sx={{ mt: 2 }}>
       <InputLabel 
        required={required}
        id={`${id}-select-label`}
-       >
+      >
         {title}
       </InputLabel>
       <Select
@@ -35,6 +36,10 @@ const SelectList = ({onChange, id, title, value, items, required = false}: Selec
         label={title}
         onChange={onChange}
       >
+        {
+          includeEmpty &&
+            <MenuItem key="" value="">...</MenuItem>
+        }
         {
           items?.map(item => 
             <MenuItem key={item.key} value={item.key}>{item.value}</MenuItem>

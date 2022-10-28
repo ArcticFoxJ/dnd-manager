@@ -24,7 +24,7 @@ function App() {
             <Route path='equipment' element={<Equipment setTitle={setTitle} />}/>
             <Route path='magic-items' element={<MagicItems setTitle={setTitle} />}/>
             <Route path='monsters' element={<Monsters setTitle={setTitle} />}/>
-            <Route path='*' element={<NotFound />}/>
+            <Route path='*' element={<NotFound setTitle={setTitle} />}/>
           </Route>
         </Routes>
     </BrowserRouter>

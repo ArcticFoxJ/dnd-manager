@@ -1,9 +1,15 @@
-import React from 'react'
+import { useEffect } from 'react'
+import PageProps from 'pages/PageProps'
 
-const NotFound = () => {
+const NotFound = ({setTitle}: PageProps) => {
+
+  useEffect(() => {
+    setTitle("404 Not Found")
+  }, [])
+
   return (
     <div>
-      404 Not Found
+      Oops
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardContent, Typography, IconButton, IconButtonProps, styled, Collapse, Avatar } from '@mui/material'
+import { Card, CardHeader, CardContent, Typography, IconButton, IconButtonProps, styled, Collapse, Avatar, Box } from '@mui/material'
 import React from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -49,8 +49,7 @@ const MagicItemListItem = ({index, name, rarity, equipmentCategory, variant, des
             </ExpandMore>
         }
         avatar={
-          <Avatar alt={equipmentCategory} src="./staff.jpg" />
-          // <Avatar alt={equipmentCategory} src={require(`assets/images/items/${equipmentCategory == 'Ammunition' ? 'staff' : equipmentCategory.toLowerCase()}.jpg`)} />
+          <Avatar alt={equipmentCategory} src={`${process.env.PUBLIC_URL}/assets/images/items/${equipmentCategory.toLocaleLowerCase()}.jpg`} />
         }
         titleTypographyProps={{ 
           align: 'center' ,
@@ -64,10 +63,6 @@ const MagicItemListItem = ({index, name, rarity, equipmentCategory, variant, des
           backgroundColor: (theme) => theme.palette.info.main 
         }}
       />
-      {/* <CardContent>
-        <img src="staff.jpg" />
-        <img src={require("staff.jpg")} />
-      </CardContent> */}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
         {description.map((description, i) => 
